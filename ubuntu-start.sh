@@ -13,7 +13,9 @@ sudo timedatectl set-timezone "Asia/Shanghai"
 
 # Install the tools you need to use
 sudo apt update
-sudo apt install -y neofetch
+sudo apt install -y neofetch zsh
+sudo chsh -s /bin/zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 sudo apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
 
 # curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \
