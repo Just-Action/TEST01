@@ -15,18 +15,19 @@ sudo timedatectl set-timezone "Asia/Shanghai"
 sudo apt update
 sudo apt install -y neofetch
 sudo apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
-curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \
-    | sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null
 
-echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \
-http://nginx.org/packages/ubuntu `lsb_release -cs` nginx" \
-    | sudo tee /etc/apt/sources.list.d/nginx.list
+# curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \
+#     | sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null
 
-echo -e "Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPin-Priority: 900\n" \
-    | sudo tee /etc/apt/preferences.d/99nginx
+# echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \
+# http://nginx.org/packages/ubuntu `lsb_release -cs` nginx" \
+#     | sudo tee /etc/apt/sources.list.d/nginx.list
 
-sudo apt update
-sudo apt install nginx -y
+# echo -e "Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPin-Priority: 900\n" \
+#     | sudo tee /etc/apt/preferences.d/99nginx
+
+# sudo apt update
+# sudo apt install nginx -y
 
 wget https://github.com/bootandy/dust/releases/download/v0.8.6/du-dust_0.8.6_amd64.deb
 sudo dpkg -i du-dust_0.8.6_amd64.deb
