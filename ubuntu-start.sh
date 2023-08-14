@@ -9,7 +9,7 @@ sudo rm -rf /opt/hostedtoolcache/CodeQL
 sudo rm -rf /usr/share/dotnet
 
 # Setting the time zone
-sudo timedatectl set-timezone "Asia/Shanghai"
+# sudo timedatectl set-timezone "Asia/Shanghai"
 
 # Install the tools you need to use
 sudo apt update
@@ -17,7 +17,7 @@ sudo apt install -y neofetch zsh
 sudo chsh -s /bin/zsh
 # sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-sudo apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
+sudo apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring -y
 
 # curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \
 #     | sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null
