@@ -9,6 +9,8 @@ jobs:
       uses: actions/checkout@main
 
     - name: Run Start Script
+      env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       run: source ubuntu-start.sh
 
     - name: Run Script
