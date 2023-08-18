@@ -24,10 +24,10 @@ sudo apt update
 # sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Install VsCode
-sudo mkdir -p /var/tmp/vscode
-sudo curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' --output /var/tmp/vscode/vscode_cli.tar.gz
-sudo tar -xf /var/tmp/vscode/vscode_cli.tar.gz -C /var/tmp/vscode/
-# nohup sudo /var/tmp/vscode/code tunnel
+sudo mkdir -p /root/vscode
+sudo curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' --output /root/vscode/vscode_cli.tar.gz
+sudo tar -xf /var/tmp/vscode/vscode_cli.tar.gz -C /root/vscode/
+# sudo screen -S vscode bash -c "cd /root/vscode && ./code tunnel"
 
 # Install Nginx
 sudo apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring -y
