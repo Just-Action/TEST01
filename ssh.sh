@@ -22,11 +22,32 @@ if [[ -z "${SSH_PASSWORD}" && -z "${SSH_PUBKEY}" && -z "${GH_SSH_PUBKEY}" ]]; th
     exit 2
 fi
 
-# 设置密码
 if [[ -n "${SSH_PASSWORD}" ]]; then
-    echo -e "${INFO} Set user(${USER}) password ..."
-    echo -e "${SSH_PASSWORD}\n${SSH_PASSWORD}" | sudo passwd "${USER}"
+    if [[ "${USER}" != "runner" ]]; then
+        echo -e "${INFO} Set user(runner) password ..."
+        sudo useradd -m -s /bin/bash runner
+        echo -e "${SSH_PASSWORD}\n${SSH_PASSWORD}" | sudo passwd runner
+
+        # 将 runner 用户添加到 sudoers 文件中
+        echo "runner ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
+
+        echo -e "${INFO} Installing SSH server ..."
+        sudo apt-get update
+        sudo apt-get install -y openssh-server
+
+        # 允许密码登录
+        sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+        sudo service ssh restart
+    else
+        echo -e "${INFO} Set user(${USER}) password ..."
+        echo -e "${SSH_PASSWORD}\n${SSH_PASSWORD}" | sudo passwd "${USER}"
+    fi
 fi
+
+mkdir -p ~/.ssh/
+echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/id_rsa
 
 # 开始安装
 echo -e "${INFO} Start install cloudflared..."
