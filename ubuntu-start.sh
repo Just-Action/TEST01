@@ -7,10 +7,7 @@ sudo rm -rf /opt/hostedtoolcache/CodeQL
 sudo rm -rf /usr/share/dotnet
 
 # Add ssh private key
-echo "$SSH_PRIVATE_KEY" > key
-chmod 600 key
-ssh-agent -a $HOME/ssh-agent.sock
-ssh-add key
+echo "$SSH_PRIVATE_KEY" > key && chmod 600 key && ssh-agent && ssh-add key && rm key
 
 # Setting the time zone
 # sudo timedatectl set-timezone "Asia/Shanghai"
