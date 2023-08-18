@@ -7,7 +7,13 @@ sudo rm -rf /opt/hostedtoolcache/CodeQL
 sudo rm -rf /usr/share/dotnet
 
 # Add ssh private key
-echo "$SSH_PRIVATE_KEY" > key && chmod 600 key && ssh-agent && ssh-add key && rm key
+mkdir -p ~/.ssh/
+echo "$$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/id_rsa
+ssh-keyscan github.com >> ~/.ssh/known_hosts
+ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
+ssh-keyscan gitee.com >> ~/.ssh/known_hosts
 
 # Setting the time zone
 # sudo timedatectl set-timezone "Asia/Shanghai"
