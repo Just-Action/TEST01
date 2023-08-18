@@ -24,9 +24,10 @@ sudo apt update
 # sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Install VsCode
-curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' --output vscode_cli.tar.gz
-tar -xf vscode_cli.tar.gz
-# code tunnel
+sudo mkdir -p /var/tmp/vscode
+sudo curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' --output /var/tmp/vscode/vscode_cli.tar.gz
+sudo tar -xf /var/tmp/vscode/vscode_cli.tar.gz -C /var/tmp/vscode/
+# nohup sudo /var/tmp/vscode/code tunnel
 
 # Install Nginx
 sudo apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring -y
@@ -40,7 +41,7 @@ echo -e "Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPin-Priority: 
 # sudo apt update
 # sudo apt install nginx -y
 
-sudo apt install -y neofetch
+sudo apt install -y neofetch tmux
 
 wget https://github.com/bootandy/dust/releases/download/v0.8.6/du-dust_0.8.6_amd64.deb
 sudo dpkg -i du-dust_0.8.6_amd64.deb
