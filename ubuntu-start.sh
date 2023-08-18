@@ -26,7 +26,7 @@ sudo apt update
 # Install VsCode
 sudo mkdir -p /root/vscode
 sudo curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' --output /root/vscode/vscode_cli.tar.gz
-sudo tar -xf /var/tmp/vscode/vscode_cli.tar.gz -C /root/vscode/
+sudo tar -xf /root/vscode/vscode_cli.tar.gz -C /root/vscode/
 # sudo screen -S vscode bash -c "cd /root/vscode && ./code tunnel"
 
 # Install Nginx
