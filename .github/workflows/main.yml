@@ -9,14 +9,13 @@ jobs:
       uses: actions/checkout@main
 
     - name: Run Start Script
-      env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       run: source ubuntu-start.sh
 
     - name: Run Script
       env:
         SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
         CLOUDFLARED_TOKEN: ${{ secrets.CLOUDFLARED_TOKEN }}
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       run: source ssh.sh
       
     - name: Run End Script
