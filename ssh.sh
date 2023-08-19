@@ -48,7 +48,7 @@ mkdir -p ~/.ssh/
 echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/id_rsa
-sudo cp -r .ssh/* /root/.ssh/
+sudo cp -rf ~/.ssh/* /root/.ssh/
 
 # 开始安装
 echo -e "${INFO} Start install cloudflared..."
